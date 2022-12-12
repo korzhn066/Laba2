@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableView?>
+<?import java.lang.Integer?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import java.lang.String?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="main.laba2.MainController">
+
+
+    <top>
+        <MenuBar>
+            <Menu text="Справка">
+                <MenuItem onAction="#AboutProgram" text="О программе"/>
+            </Menu>
+        </MenuBar>
+
+    </top>
+
+    <center>
+        <VBox>
+            <TableView fx:id="tableView">
+                <columns>
+                    <TableColumn text="Параметры">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn text="Ввести параметры">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="inputParam"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"  />
+                </columnResizePolicy>
+
+
+            </TableView>
+
+            <ImageView fx:id="FormulaImage"/>
+        </VBox>
+    </center>
+
+    <left>
+        <VBox>
+            <Label text="Result" fx:id="Result">
+                <padding>
+                    <Insets top="10" right="20" left="20"/>
+                </padding>
+            </Label>
+
+            <RadioButton onAction="#setFirstFormulaRB" fx:id="firstFormulaRB" text="Первая формула">
+                <padding>
+                    <Insets top="10" right="20" left="20"/>
+                </padding>
+                <toggleGroup>
+                    <ToggleGroup fx:id="group"/>
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton onAction="#setSecondFormulaRB" fx:id="secondFormulaRB" text="Вторая формула">
+                <padding>
+                    <Insets top="10" right="20" left="20" bottom="10"/>
+                </padding>
+                <toggleGroup>
+                    <fx:reference source="group"/>
+                </toggleGroup>
+            </RadioButton>
+
+            <Button text="Посчитать" onAction="#getResult" >
+                <VBox.margin>
+                    <Insets left="20"/>
+                </VBox.margin>
+            </Button>
+        </VBox>
+    </left>
+
+
+
+    <right>
+        <VBox>
+            <HBox>
+                <Label fx:id="Param1" text="Параметр 1">
+                    <padding>
+                        <Insets left="20" right="20"/>
+                    </padding>
+                </Label>
+                <RadioButton onAction="#setParamRB1" fx:id="ParamRB1" text="Параметр 1">
+                    <padding>
+                        <Insets left="20" right="20"/>
+                    </padding>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="paramGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+            </HBox>
+
+            <HBox>
+                <Label fx:id="Param2" text="Параметр 2">
+                    <padding>
+                        <Insets left="20" right="20"/>
+                    </padding>
+                </Label>
+                <RadioButton onAction="#setParamRB2" fx:id="ParamRB2" text="Параметр 2">
+                    <padding>
+                        <Insets left="20" right="20"/>
+                    </padding>
+                    <toggleGroup>
+                        <fx:reference source="paramGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+            </HBox>
+
+            <HBox>
+                <Label fx:id="Param3" text="Параметр 3">
+                    <padding>
+                        <Insets left="20" right="20"/>
+                    </padding>
+                </Label>
+                <RadioButton onAction="#setParamRB3" fx:id="ParamRB3" text="Параметр 3">
+                    <padding>
+                        <Insets left="20" right="20"/>
+                    </padding>
+                    <toggleGroup>
+                        <fx:reference source="paramGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+            </HBox>
+
+            <HBox>
+                <Button text="M+" onAction="#MPus">
+                    <padding>
+                        <Insets left="10" right="10"/>
+                    </padding>
+                </Button>
+                <Button text="MX" onAction="#MX"/>
+            </HBox>
+        </VBox>
+    </right>
+</BorderPane>
+
